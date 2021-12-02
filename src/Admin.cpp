@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <string>
+#include <fstream>
 #include <conio.h>
 #include <windows.h>
 using namespace std;
@@ -98,6 +99,7 @@ void Admin::adminAction(int opt){
 
     case 1:
         // add item
+        this->addFood();
         break;
 
     case 2:
@@ -165,7 +167,31 @@ void Admin::adminLogin(){
     }
     else
     {
-        Menu::selectUser();
+        Menu::userAction(Menu::selectUser());
     }
+}
+
+void Admin::addFood(){
+    system("cls");
+
+    cin.clear();
+    cin.ignore(1000, '\n');
+
+    string foodCode, foodName, foodType;
+    double foodPrice;
+
+    cout << "\n\n\n\n\n\n" << endl;
+    cout << "\n" << setw(64) << "Enter the Food Code  : ";
+    getline(cin, foodCode);
+
+    cout << "\n" << setw(64) << "Enter the Food Name  : ";
+    getline(cin, foodCode);
+
+    cout << "\n" << setw(64) << "Enter the Food Type  : ";
+    getline(cin, foodCode);
+
+    cout << "\n" << setw(67) << "Enter the Food Price : RM ";
+    cin >> foodPrice;
+
 }
 

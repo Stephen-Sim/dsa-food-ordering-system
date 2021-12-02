@@ -12,8 +12,10 @@ class Admin
         virtual ~Admin();
         string getpass(bool);
         void adminAction(int);
+        // need to change to later, adminMenu is not static func
         static int adminMenu();
         void adminLogin();
+        void addFood();
 
     protected:
 
