@@ -43,7 +43,36 @@ int Menu::selectUser()
 {
     int opt;
 
-    cout << "Hello World" << endl;
+    cout << "\n\n\n\n\n\n\n\n";
+
+    cout << setw(45);
+    for(int i = 0; i < 33; i++)
+    {
+        Sleep(5);
+        cout << "*";
+    }
+
+    cout << endl << setw(69) << "The Action Menu\n\n";
+    cout << setw(68) << "1. Admin Login\n\n";
+    cout << setw(71) << "2. Customer Order\n\n";
+
+    cout << setw(45);
+    for(int i = 0; i < 33; i++)
+    {
+        Sleep(5);
+        cout << "*";
+    }
+
+
+    do{
+        cout << endl << setw(60) << "> ";
+        cin >> opt;
+
+        if(opt != 1 && opt != 2)
+        {
+            cout << setw(78) << "Invalid Input !! Please Enter Again" << endl;
+        }
+    }while(opt != 1 && opt != 2);
 
     return 0;
 }
