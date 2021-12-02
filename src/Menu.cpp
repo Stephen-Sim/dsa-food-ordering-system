@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Admin.h"
 #include <iostream>
 #include <iomanip>
 #include <windows.h>
@@ -28,9 +29,13 @@ Menu::Menu()
 
     system("pause");
 
-    system("cls");
+    int opt = this->selectUser();
 
-    this->selectUser();
+    system("cls");
+    if(opt == 1)
+    {
+        Admin admin;
+    }
 
 }
 
@@ -41,6 +46,7 @@ Menu::~Menu()
 
 int Menu::selectUser()
 {
+    system("cls");
     int opt;
 
     cout << "\n\n\n\n\n\n\n\n";
@@ -74,5 +80,5 @@ int Menu::selectUser()
         }
     }while(opt != 1 && opt != 2);
 
-    return 0;
+    return opt;
 }

@@ -1,13 +1,28 @@
 # depslib dependency file v1.0
-1638453427 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\main.cpp
+1638458744 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\main.cpp
 	<iostream>
 	"Menu.h"
+	"Admin.h"
 
-1638453865 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\menu.cpp
+1638459174 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\menu.cpp
 	"Menu.h"
+	"Admin.h"
 	<iostream>
 	<iomanip>
 	<windows.h>
 
-1638453851 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\menu.h
+1638458912 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\menu.h
+
+1638459261 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\admin.cpp
+	"Admin.h"
+	"Menu.h"
+	<iostream>
+	<cstdlib>
+	<iomanip>
+	<string>
+	<conio.h>
+	<windows.h>
+
+1638458728 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\admin.h
+	<string>
 

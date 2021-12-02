@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Menu.h"
+#include "Admin.h"
 using namespace std;
 
 int main()
 {
-    system("color: Fd");
+    system("color 17");
     Menu menu;
+    Admin admin;
     return 0;
 }

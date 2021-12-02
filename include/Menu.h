@@ -6,7 +6,7 @@ class Menu
     public:
         Menu();
         virtual ~Menu();
-        int selectUser();
+        static int selectUser();
 
     protected:
 
