@@ -40,8 +40,8 @@ void Food::setFoodType()
         {
             if(foodType == "Drink"){
                 cout << "\b\b\b\b\b";
-                foodType = "Food";
-                cout << " Food";
+                foodType = "food";
+                cout << " food";
             }
 
         }
@@ -49,8 +49,8 @@ void Food::setFoodType()
         {
             if(foodType == "Food"){
                 cout << "\b\b\b\b\b";
-                foodType = "Drink";
-                cout << "Drink";
+                foodType = "drink";
+                cout << "drink";
             }
         }
     }
@@ -61,6 +61,26 @@ void Food::setFoodType()
 void Food::setFoodPrice(double foodPrice)
 {
     this->foodPrice = foodPrice;
+}
+
+string Food::getFoodCode()
+{
+    return this->foodCode;
+}
+
+string Food::getFoodName()
+{
+    return this->foodName;
+}
+
+string Food::getFoodType()
+{
+    return this->foodType;
+}
+
+double Food::getFoodPrice()
+{
+    return this->foodPrice;
 }
 
 

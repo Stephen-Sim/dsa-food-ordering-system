@@ -14,13 +14,17 @@ class Food
         void setFoodType();
         void setFoodPrice(double);
 
+        string getFoodCode();
+        string getFoodName();
+        string getFoodType();
+        double getFoodPrice();
+
     protected:
 
     private:
         string foodCode;
         string foodName;
         double foodPrice;
-        const string foodTypeList[2] = {"Food", "Drink"};
         string foodType;
 
 };

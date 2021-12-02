@@ -175,6 +175,7 @@ void Admin::adminLogin(){
 void Admin::addFood(){
     system("cls");
 
+    cout << "Move Arrow Key Up to select Food, Down to Select Drink";
     cin.clear();
     cin.ignore(1000, '\n');
 
@@ -182,7 +183,7 @@ void Admin::addFood(){
     string foodCode, foodName, foodType;
     double foodPrice;
 
-    cout << "\n\n\n\n\n\n" << endl;
+    cout << "\n\n\n\n\n" << endl;
     cout << "\n" << setw(64) << "Enter the Food Code  : ";
     getline(cin, foodCode);
     food.setFoodCode(foodCode);
@@ -198,5 +199,8 @@ void Admin::addFood(){
     cin >> foodPrice;
     food.setFoodPrice(foodPrice);
 
+    ofstream file("food.csv");
+    file << food.getFoodCode() << ',' << food.getFoodName() << ','  << food.getFoodType() << ','  << food.getFoodPrice() << endl;
+    file.close();
 }
 
