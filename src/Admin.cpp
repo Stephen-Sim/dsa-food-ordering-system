@@ -1,5 +1,6 @@
 #include "Admin.h"
 #include "Menu.h"
+#include "Food.h"
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
@@ -177,21 +178,25 @@ void Admin::addFood(){
     cin.clear();
     cin.ignore(1000, '\n');
 
+    Food food;
     string foodCode, foodName, foodType;
     double foodPrice;
 
     cout << "\n\n\n\n\n\n" << endl;
     cout << "\n" << setw(64) << "Enter the Food Code  : ";
     getline(cin, foodCode);
+    food.setFoodCode(foodCode);
 
     cout << "\n" << setw(64) << "Enter the Food Name  : ";
-    getline(cin, foodCode);
+    getline(cin, foodName);
+    food.setFoodName(foodName);
 
     cout << "\n" << setw(64) << "Enter the Food Type  : ";
-    getline(cin, foodCode);
+    food.setFoodType();
 
-    cout << "\n" << setw(67) << "Enter the Food Price : RM ";
+    cout << "\n\n" << setw(67) << "Enter the Food Price : RM ";
     cin >> foodPrice;
+    food.setFoodPrice(foodPrice);
 
 }
 
