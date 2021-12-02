@@ -7,5 +7,6 @@ int main()
 {
     system("color 17");
     Menu menu;
+    // Admin::adminMenu();
     return 0;
 }

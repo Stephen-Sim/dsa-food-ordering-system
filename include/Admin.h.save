@@ -11,8 +11,9 @@ class Admin
         Admin();
         virtual ~Admin();
         string getpass(bool);
+        void 
+        int adminMenu();
         void adminLogin();
-        
 
     protected:
 

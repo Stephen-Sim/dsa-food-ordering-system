@@ -34,7 +34,7 @@ string Admin::getpass(bool show_asterisk = true)
             {
                 if(show_asterisk)
                 cout << "\b \b";
-                password.resize(password.length()-1);
+                password.resize(password.length() - 1);
             }
         }
         else if(ch == 0 || ch == 224) // handle escape sequences
@@ -46,7 +46,7 @@ string Admin::getpass(bool show_asterisk = true)
         {
             password += ch;
             if(show_asterisk)
-            cout <<'*';
+                cout << '*';
         }
     }
 
@@ -54,8 +54,66 @@ string Admin::getpass(bool show_asterisk = true)
     return password;
 }
 
-void Admin::adminMenu(){
-    cout << "Hi admin" << endl;
+int Admin::adminMenu(){
+    system("cls");
+    int opt;
+
+    cout << "\n\n\n\n\n\n\n\n";
+
+    cout << setw(45);
+    for(int i = 0; i < 33; i++)
+    {
+        Sleep(5);
+        cout << "*";
+    }
+
+    cout << endl << setw(68) << "Admin Action\n\n";
+    cout << setw(68) << "1. Add Food\n\n";
+    cout << setw(79) << "2. Display Food Detail\n\n";
+    cout << setw(64) << "3. Back\n\n";
+
+    cout << setw(45);
+    for(int i = 0; i < 33; i++)
+    {
+        Sleep(5);
+        cout << "*";
+    }
+
+
+    do{
+        cout << endl << setw(60) << "> ";
+        cin >> opt;
+
+        if(opt != 1 && opt != 2 && opt != 3)
+        {
+            cout << setw(78) << "Invalid Input !! Please Enter Again" << endl;
+        }
+    }while(opt != 1 && opt != 2 && opt != 3);
+
+    return opt;
+}
+
+void Admin::adminAction(int opt){
+    switch(opt){
+
+    case 1:
+        // add item
+        break;
+
+    case 2:
+        // display item
+
+        break;
+
+    case 3:
+        // back to main menu
+        Menu::userAction(Menu::selectUser());
+        break;
+
+    default:
+        // nothing
+        break;
+    }
 }
 
 void Admin::adminLogin(){
@@ -102,7 +160,8 @@ void Admin::adminLogin(){
 
     if(loginTrue)
     {
-        this->adminMenu();
+        int opt = this->adminMenu();
+        this->adminAction(opt);
     }
     else
     {

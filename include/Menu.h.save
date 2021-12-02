@@ -8,6 +8,7 @@ class Menu
         virtual ~Menu();
         static int selectUser();
         void exitPage();
+        static void userAction();
 
     protected:
 

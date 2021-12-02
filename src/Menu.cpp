@@ -29,22 +29,7 @@ Menu::Menu()
 
     system("pause");
 
-    int opt = this->selectUser();
-
-    system("cls");
-    if(opt == 1)
-    {
-        Admin admin;
-    }
-    else if(opt == 2)
-    {
-
-    }
-    else if(opt == 3)
-    {
-        this->exitPage();
-    }
-
+    this->userAction(this->selectUser());
 }
 
 Menu::~Menu()
@@ -66,7 +51,7 @@ int Menu::selectUser()
         cout << "*";
     }
 
-    cout << endl << setw(69) << "The Action Menu\n\n";
+    cout << endl << setw(69) << "The User Menu\n\n";
     cout << setw(68) << "1. Admin Login\n\n";
     cout << setw(71) << "2. Customer Order\n\n";
     cout << setw(61) << "3. Exit\n\n";
@@ -99,4 +84,21 @@ void Menu::exitPage(){
     cout << "\n\n\n\n\t\t\t\t\t     ";
     system("pause");
     system("cls");
+}
+
+void Menu::userAction(int opt){
+    system("cls");
+
+    if(opt == 1)
+    {
+        Admin admin;
+    }
+    else if(opt == 2)
+    {
+
+    }
+    else if(opt == 3)
+    {
+        Menu::exitPage();
+    }
 }
