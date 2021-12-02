@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1638465905 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\main.cpp
+1638469953 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\main.cpp
 	<iostream>
 	"Menu.h"
 	"Admin.h"
@@ -13,7 +13,7 @@
 
 1638465905 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\menu.h
 
-1638469759 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\admin.cpp
+1638470899 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\admin.cpp
 	"Admin.h"
 	"Menu.h"
 	"Food.h"
@@ -25,15 +25,15 @@
 	<conio.h>
 	<windows.h>
 
-1638469837 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\admin.h
+1638469953 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\admin.h
 	<string>
 
-1638469600 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\food.cpp
+1638470899 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\food.cpp
 	"Food.h"
 	<iostream>
 	<conio.h>
 	<string>
 
-1638469600 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\food.h
+1638469953 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\food.h
 	<string>
 

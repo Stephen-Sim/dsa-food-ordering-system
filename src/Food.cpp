@@ -30,9 +30,9 @@ void Food::setFoodType()
     const char RETURN = 13;
     unsigned char ch = 0;
 
-    string foodType = "Food";
+    string foodType = "food";
 
-    cout << " Food";
+    cout << " food";
 
     while((ch = getch())!= RETURN)
     {

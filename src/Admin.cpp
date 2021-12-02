@@ -96,11 +96,14 @@ int Admin::adminMenu(){
 }
 
 void Admin::adminAction(int opt){
+
     switch(opt){
 
     case 1:
         // add item
         this->addFood();
+        opt = this->adminMenu();
+        this->adminAction(opt);
         break;
 
     case 2:
@@ -184,23 +187,27 @@ void Admin::addFood(){
     double foodPrice;
 
     cout << "\n\n\n\n\n" << endl;
-    cout << "\n" << setw(64) << "Enter the Food Code  : ";
+    cout << "\n" << setw(69) << "Enter the Food Code  : ";
     getline(cin, foodCode);
     food.setFoodCode(foodCode);
 
-    cout << "\n" << setw(64) << "Enter the Food Name  : ";
+    cout << "\n" << setw(69) << "Enter the Food Name  : ";
     getline(cin, foodName);
     food.setFoodName(foodName);
 
-    cout << "\n" << setw(64) << "Enter the Food Type  : ";
+    cout << "\n" << setw(69) << "Enter the Food Type  : ";
     food.setFoodType();
 
-    cout << "\n\n" << setw(67) << "Enter the Food Price : RM ";
+    cout << "\n\n" << setw(72) << "Enter the Food Price : RM ";
     cin >> foodPrice;
     food.setFoodPrice(foodPrice);
 
-    ofstream file("food.csv");
+    ofstream file("food.csv", ofstream::out | ofstream::app);
     file << food.getFoodCode() << ',' << food.getFoodName() << ','  << food.getFoodType() << ','  << food.getFoodPrice() << endl;
     file.close();
+
+    cout << "\n\n\n" << setw(75) << "Food Successfully Added !!!" << endl;
+    cout << "\n\n\t\t\t\t\t     ";
+    system("pause");
 }
 
