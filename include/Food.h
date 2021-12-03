@@ -24,7 +24,7 @@ class Food
 
         static void displayFood();
         static vector <Food> getFoodFromFile();
-        static void getFoodDataTable(vector<Food>);
+        static void getFoodDataTable(vector<Food>, int);
 
     protected:
 

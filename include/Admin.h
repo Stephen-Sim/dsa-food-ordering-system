@@ -10,11 +10,11 @@ class Admin
     public:
         Admin();
         virtual ~Admin();
-        string getpass(bool);
-        void adminAction(int);
-        static int adminMenu();
+        string getPass(bool);
+        static void adminAction(int);
+        static void adminMenu();
         void adminLogin();
-        void addFood();
+        static void addFood();
 
     protected:
 

@@ -1,4 +1,5 @@
 #include "Food.h"
+#include "Admin.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -6,6 +7,8 @@
 #include <conio.h>
 #include <windows.h>
 #include <vector>
+
+#define RETURN 13
 using namespace std;
 
 Food::Food()
@@ -39,7 +42,6 @@ void Food::setFoodName(string foodName)
 
 void Food::setFoodType()
 {
-    const char RETURN = 13;
     unsigned char ch = 0;
 
     string foodType = "food";
@@ -98,11 +100,54 @@ double Food::getFoodPrice()
 void Food::displayFood()
 {
     system("cls");
-
-    cout << "\n\n\t\t\t\t1. Sort Food\t\t2. Search Food\t\t3. Back" << endl;
+    unsigned char opt = 0;
+    int current = 1;
+    int i = 1;
 
     vector <Food> foodList = Food::getFoodFromFile();
-    Food::getFoodDataTable(foodList);
+    Food::getFoodDataTable(foodList, i);
+
+    while((opt = getch())!= RETURN){
+
+        opt = getch();
+
+        if(opt == 77) // move right
+        {
+            Food::getFoodDataTable(foodList, ++i);
+            continue;
+        }
+        else if(opt == 75) // move left
+        {
+            Food::getFoodDataTable(foodList, --i);
+            continue;
+        }
+        else if(opt == 72) // move up
+        {
+            if(current > 1){
+                cout << "\b \b";
+                cout << --current;
+            }
+
+        }
+        else if(opt == 80) // move up
+        {
+            if(current < 3){
+                cout << "\b \b";
+                cout << ++current;
+            }
+        }
+    }
+
+    if(current == 1){
+
+    }
+    else if(current == 2)
+    {
+
+    }
+    else if(current == 3){
+        Admin::adminMenu();
+    }
 }
 
 vector <Food> Food::getFoodFromFile()
@@ -142,8 +187,13 @@ vector <Food> Food::getFoodFromFile()
     return foodList;
 }
 
-void Food::getFoodDataTable(vector <Food> foodList)
+#define iValue ((counter - 1) * 10)
+#define dataTableSize i < foodList.size() && i < counter * 10
+
+void Food::getFoodDataTable(vector <Food> foodList, int counter)
 {
+    system("cls");
+    cout << "\n\n\t\t\t\t1. Sort Food\t\t2. Search Food\t\t3. Back" << endl;
     cout << fixed;
     // table header
     cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
@@ -154,7 +204,8 @@ void Food::getFoodDataTable(vector <Food> foodList)
     cout << setfill(' ') << setw(15) << "Price" << " |";
     cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
 
-    for(int i = 0; i < foodList.size(); i++)
+
+    for(int i = iValue; dataTableSize; i++)
     {
         cout << "\t\t|" << setfill(' ') << setw(5) << i + 1 << " |";
         cout << setfill(' ') << setw(13) << foodList[i].foodCode << " |";
@@ -164,6 +215,7 @@ void Food::getFoodDataTable(vector <Food> foodList)
         cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
     }
 
+    cout << endl << setfill(' ') << setw(60) << "> 1";
 }
 
 

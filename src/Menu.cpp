@@ -2,7 +2,10 @@
 #include "Admin.h"
 #include <iostream>
 #include <iomanip>
+#include <conio.h>
 #include <windows.h>
+
+#define RETURN 13
 using namespace std;
 
 Menu::Menu()
@@ -16,7 +19,7 @@ Menu::Menu()
     }
 
     cout << "\n\n" << setw(78) << "Welcome to Food Ordering System\n\n";
-    cout << setw(68) << "By Group 2\n\n";
+    cout << setw(68) << "By Group A2\n\n";
 
     cout << setw(45) << endl;
     for(int i = 0; i < 33; i++)
@@ -40,8 +43,6 @@ Menu::~Menu()
 int Menu::selectUser()
 {
     system("cls");
-    int opt;
-
     cout << "\n\n\n\n\n\n\n\n";
 
     cout << setw(45);
@@ -64,17 +65,33 @@ int Menu::selectUser()
     }
 
 
-    do{
-        cout << endl << setw(60) << "> ";
-        cin >> opt;
+    unsigned char opt = 0;
+    int current = 1;
 
-        if(opt != 1 && opt != 2 && opt != 3)
+    cout << endl << setw(60) << "> 1";
+
+    while((opt = getch())!= RETURN){
+
+        opt = getch();
+
+        if(opt == 72) // move up
         {
-            cout << setw(78) << "Invalid Input !! Please Enter Again" << endl;
-        }
-    }while(opt != 1 && opt != 2 && opt != 3);
+            if(current > 1){
+                cout << "\b \b";
+                cout << --current;
+            }
 
-    return opt;
+        }
+        else if(opt == 80) // move up
+        {
+            if(current < 3){
+                cout << "\b \b";
+                cout << ++current;
+            }
+        }
+    }
+
+    return current;
 }
 
 void Menu::exitPage(){

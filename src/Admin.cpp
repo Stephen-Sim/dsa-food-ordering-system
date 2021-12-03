@@ -8,6 +8,9 @@
 #include <fstream>
 #include <conio.h>
 #include <windows.h>
+
+#define RETURN 13
+#define BACKSPACE 8
 using namespace std;
 
 Admin::Admin()
@@ -20,11 +23,8 @@ Admin::~Admin()
     //dtor
 }
 
-string Admin::getpass(bool show_asterisk = true)
+string Admin::getPass(bool show_asterisk = true)
 {
-    const char BACKSPACE = 8;
-    const char RETURN = 13;
-
     string password;
     unsigned char ch = 0;
 
@@ -56,9 +56,8 @@ string Admin::getpass(bool show_asterisk = true)
     return password;
 }
 
-int Admin::adminMenu(){
+void Admin::adminMenu(){
     system("cls");
-    int opt;
 
     cout << "\n\n\n\n\n\n\n\n";
 
@@ -81,18 +80,33 @@ int Admin::adminMenu(){
         cout << "*";
     }
 
+    unsigned char opt = 0;
+    int current = 1;
 
-    do{
-        cout << endl << setw(60) << "> ";
-        cin >> opt;
+    cout << endl << setw(60) << "> 1";
 
-        if(opt != 1 && opt != 2 && opt != 3)
+    while((opt = getch())!= RETURN){
+
+        opt = getch();
+
+        if(opt == 72) // move up
         {
-            cout << setw(78) << "Invalid Input !! Please Enter Again" << endl;
-        }
-    }while(opt != 1 && opt != 2 && opt != 3);
+            if(current > 1){
+                cout << "\b \b";
+                cout << --current;
+            }
 
-    return opt;
+        }
+        else if(opt == 80) // move up
+        {
+            if(current < 3){
+                cout << "\b \b";
+                cout << ++current;
+            }
+        }
+    }
+
+    adminAction(current);
 }
 
 void Admin::adminAction(int opt){
@@ -101,13 +115,13 @@ void Admin::adminAction(int opt){
 
     case 1:
         // add item
-        this->addFood();
-        opt = this->adminMenu();
-        this->adminAction(opt);
+        addFood();
+        adminMenu();
         break;
 
     case 2:
         // display item
+        Food::displayFood();
         break;
 
     case 3:
@@ -141,7 +155,7 @@ void Admin::adminLogin(){
     getline(cin, username);
 
     cout << "\n" << setw(66) << "Password : ";
-    pwd = getpass();
+    pwd = getPass();
 
     cout << "\n\n" << setw(45);
     for(int i = 0; i < 36; i++)
@@ -165,8 +179,7 @@ void Admin::adminLogin(){
 
     if(loginTrue)
     {
-        int opt = this->adminMenu();
-        this->adminAction(opt);
+        this->adminMenu();
     }
     else
     {
