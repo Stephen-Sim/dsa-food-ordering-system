@@ -1,15 +1,15 @@
 # depslib dependency file v1.0
-1638520626 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\main.cpp
+1638522105 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\main.cpp
 	<iostream>
 	<sys/stat.h>
 	"Menu.h"
-	"Admin.h"
-	"Food.h"
+	"Customer.h"
 	"Seed.h"
 
-1638516353 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\menu.cpp
+1638521945 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\menu.cpp
 	"Menu.h"
 	"Admin.h"
+	"Customer.h"
 	<iostream>
 	<iomanip>
 	<conio.h>
@@ -17,7 +17,7 @@
 
 1638465905 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\menu.h
 
-1638516353 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\admin.cpp
+1638522394 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\admin.cpp
 	"Admin.h"
 	"Menu.h"
 	"Food.h"
@@ -29,10 +29,10 @@
 	<conio.h>
 	<windows.h>
 
-1638500213 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\admin.h
+1638522001 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\admin.h
 	<string>
 
-1638520609 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\food.cpp
+1638520830 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\food.cpp
 	"Food.h"
 	"Admin.h"
 	<iostream>
@@ -44,7 +44,7 @@
 	<windows.h>
 	<vector>
 
-1638520474 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\food.h
+1638522676 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\food.h
 	<string>
 	<vector>
 
@@ -58,4 +58,18 @@
 1638504914 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\seed.h
 	<vector>
 	"Food.h"
+
+1638522001 c:\users\simsh\desktop\c++project\dsa-food-ordering-system\include\customer.h
+
+1638522388 source:c:\users\simsh\desktop\c++project\dsa-food-ordering-system\src\customer.cpp
+	"Customer.h"
+	"Menu.h"
+	"Food.h"
+	<iostream>
+	<cstdlib>
+	<iomanip>
+	<string>
+	<fstream>
+	<conio.h>
+	<windows.h>
 

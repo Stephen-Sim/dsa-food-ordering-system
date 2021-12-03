@@ -22,11 +22,11 @@ class Food
         string getFoodType();
         double getFoodPrice();
 
-        static void displayFood();
+        static void displayFood(char);
         static vector <Food> getFoodFromFile();
         static void getFoodDataTable(vector<Food>, int);
         static void sortFoodDataTable(vector<Food>, int, int);
-        static void displaySort(vector <Food>, int, bool);
+        static void displaySort(vector <Food>, char, int, bool);
         static void sortByName(vector<Food>&);
         static void sortByType(vector<Food>&);
         static void sortByPrice(vector<Food>&);

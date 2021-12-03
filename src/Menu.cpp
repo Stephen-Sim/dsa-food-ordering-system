@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "Admin.h"
+#include "Customer.h"
 #include <iostream>
 #include <iomanip>
 #include <conio.h>
@@ -112,7 +113,7 @@ void Menu::userAction(int opt){
     }
     else if(opt == 2)
     {
-
+        Customer customer;
     }
     else if(opt == 3)
     {

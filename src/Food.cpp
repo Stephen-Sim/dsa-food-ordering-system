@@ -1,5 +1,6 @@
 #include "Food.h"
 #include "Admin.h"
+#include "Customer.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -98,7 +99,7 @@ double Food::getFoodPrice()
     return this->foodPrice;
 }
 
-void Food::displayFood()
+void Food::displayFood(char currentUser)
 {
     system("cls");
     unsigned char opt = 0;
@@ -150,15 +151,22 @@ void Food::displayFood()
     }
 
     if(current == 1){
-        Food::displaySort(foodList, 1, true);
+        Food::displaySort(foodList, 1, currentUser, true);
     }
     else if(current == 2)
     {
         Food::searchMenu(foodList);
-        Food::displayFood();
+        Food::displayFood(currentUser);
     }
     else if(current == 3){
-        Admin::adminMenu();
+        if(currentUser == 'a')
+        {
+            Admin::adminMenu();
+        }
+        else
+        {
+            Customer::cusMenu();
+        }
     }
 }
 
@@ -313,7 +321,7 @@ void Food::sortByPrice(vector <Food> & foodList)
     }
 }
 
-void Food::displaySort(vector <Food> foodList, int current = 1, bool isTrue = true)
+void Food::displaySort(vector <Food> foodList, char currentUser, int current = 1, bool isTrue = true)
 {
     unsigned char opt = 0; int i = 1;
     vector <Food> temp = foodList;
@@ -366,22 +374,22 @@ void Food::displaySort(vector <Food> foodList, int current = 1, bool isTrue = tr
     {
         sortByName(temp);
         Food::sortFoodDataTable(temp, i, current);
-        Food::displaySort(temp, current, false);
+        Food::displaySort(temp, currentUser, current, false);
     }
     else if(current == 2)
     {
         sortByType(temp);
         Food::sortFoodDataTable(temp, i, current);
-        Food::displaySort(temp, current, false);
+        Food::displaySort(temp, currentUser, current, false);
     }
     else if(current == 3)
     {
         sortByPrice(temp);
         Food::sortFoodDataTable(temp, i, current);
-        Food::displaySort(temp, current, false);
+        Food::displaySort(temp, currentUser, current, false);
     }
     else if(current == 4){
-        Food::displayFood();
+        Food::displayFood(currentUser);
     }
 }
 

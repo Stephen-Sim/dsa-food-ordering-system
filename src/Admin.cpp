@@ -121,7 +121,7 @@ void Admin::adminAction(int opt){
 
     case 2:
         // display item
-        Food::displayFood();
+        Food::displayFood('a');
         break;
 
     case 3:
