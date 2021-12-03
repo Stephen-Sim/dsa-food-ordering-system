@@ -31,6 +31,9 @@ class Food
         static void sortByType(vector<Food>&);
         static void sortByPrice(vector<Food>&);
 
+        static void searchMenu(vector <Food>);
+        static Food binarySearch(vector <Food>, string, bool&);
+
     protected:
 
     private:

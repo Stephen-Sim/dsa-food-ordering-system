@@ -154,7 +154,8 @@ void Food::displayFood()
     }
     else if(current == 2)
     {
-
+        Food::searchMenu(foodList);
+        Food::displayFood();
     }
     else if(current == 3){
         Admin::adminMenu();
@@ -384,5 +385,69 @@ void Food::displaySort(vector <Food> foodList, int current = 1, bool isTrue = tr
     }
 }
 
+void Food::searchMenu(vector <Food> foodList)
+{
+    system("cls");
+    bool isTrue = false;
+    string foodName;
+    cout << "\n\n\n\tEnter Food By Name : ";
+    getline(cin, foodName);
+
+    Food result = Food::binarySearch(foodList, foodName, isTrue);
+
+    if(isTrue)
+    {
+        cout << "\n\n\n\n\t\t" << setfill('-') << setw(85) << "\n";
+        cout << "\t\t|" << setfill(' ') << setw(5) << "Bil" << " |";
+        cout << setfill(' ') << setw(13) << "Food Code" << " |";
+        cout << setfill(' ') << setw(25) << "Food Name" << " |";
+        cout << setfill(' ') << setw(15) << "Food Type" << " |";
+        cout << setfill(' ') << setw(15) << "Price" << " |";
+        cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+
+        cout << "\t\t|" << setfill(' ') << setw(5) << 1 << " |";
+        cout << setfill(' ') << setw(13) << result.getFoodCode() << " |";
+        cout << setfill(' ') << setw(25) << result.getFoodName() << " |";
+        cout << setfill(' ') << setw(15) << result.getFoodType() << " |";
+        cout << setfill(' ') << setw(15) << setprecision(2) << result.getFoodPrice() << " |";
+        cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+    }
+    else
+    {
+        cout << "\n\n\n\t\t" << setfill('-') << setw(85) << "\n";
+        cout << "\t\t|" << setfill(' ') << setw(84) << " |\n";
+        cout << "\t\t|" << setfill(' ') << setw(54) << "Record Not Found !!! " << setw(30) << "|\n";
+        cout << "\t\t|" << setfill(' ') << setw(84) << " |\n";
+        cout << "\t\t" << setfill('-') << setw(85) << "\n";
+    }
+
+    cout << "\n\n\n\n\t\t\t\t\t     ";
+    system("pause");
+}
+
+Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isTrue)
+{
+    int low = 0, high = foodList.size();
+
+    while(low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (foodList[mid].getFoodName() == foodName)
+        {
+            isTrue = true;
+            return foodList[mid];
+        }
+
+        if (foodList[mid].getFoodName()[0] < foodName[0])
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    Food food(" ", " ", " ", 0.0);
+
+    return food;
+}
 
 
