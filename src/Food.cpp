@@ -144,6 +144,25 @@ vector <Food> Food::getFoodFromFile()
 
 void Food::getFoodDataTable(vector <Food> foodList)
 {
+    cout << fixed;
+    // table header
+    cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+    cout << "\t\t|" << setfill(' ') << setw(5) << "Bil" << " |";
+    cout << setfill(' ') << setw(13) << "Food Code" << " |";
+    cout << setfill(' ') << setw(25) << "Food Name" << " |";
+    cout << setfill(' ') << setw(15) << "Food Type" << " |";
+    cout << setfill(' ') << setw(15) << "Price" << " |";
+    cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+
+    for(int i = 0; i < foodList.size(); i++)
+    {
+        cout << "\t\t|" << setfill(' ') << setw(5) << i + 1 << " |";
+        cout << setfill(' ') << setw(13) << foodList[i].foodCode << " |";
+        cout << setfill(' ') << setw(25) << foodList[i].foodName << " |";
+        cout << setfill(' ') << setw(15) << foodList[i].foodType << " |";
+        cout << setfill(' ') << setw(15) << setprecision(2) << foodList[i].foodPrice << " |";
+        cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+    }
 
 }
 
