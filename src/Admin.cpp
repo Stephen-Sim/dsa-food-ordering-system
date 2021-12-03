@@ -85,8 +85,8 @@ void Admin::adminMenu(){
 
     cout << endl << setw(60) << "> 1";
 
-    while((opt = getch())!= RETURN){
 
+    while((opt = getch())!= RETURN){
         opt = getch();
 
         if(opt == 72) // move up
@@ -95,7 +95,6 @@ void Admin::adminMenu(){
                 cout << "\b \b";
                 cout << --current;
             }
-
         }
         else if(opt == 80) // move up
         {
@@ -104,6 +103,8 @@ void Admin::adminMenu(){
                 cout << ++current;
             }
         }
+
+        fflush(stdin);
     }
 
     adminAction(current);
@@ -150,7 +151,6 @@ void Admin::adminLogin(){
         cout << "=";
     }
 
-    cin.ignore(1000, '\n');
     cout << "\n\n" << setw(66) << "Admin Login : ";
     getline(cin, username);
 
@@ -173,6 +173,7 @@ void Admin::adminLogin(){
         cout << "\n\n\n" << setw(71) << "Login Failed !!!" << endl;
     }
 
+    fflush(stdin);
     cout << "\n\n\n\n\t\t\t\t\t     ";
     system("pause");
     system("cls");
@@ -191,9 +192,6 @@ void Admin::addFood(){
     system("cls");
 
     cout << "Move Arrow Key Up to select Food, Down to Select Drink";
-    cin.clear();
-    cin.ignore(1000, '\n');
-
     Food food;
     string foodCode, foodName, foodType;
     double foodPrice;

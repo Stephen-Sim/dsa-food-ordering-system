@@ -7,8 +7,8 @@ using namespace std;
 int main()
 {
     system("color 17");
-    // Menu menu;
-    // Admin::adminMenu();
-    Food::displayFood();
+    Menu menu;
+    // Admin::addFood();
+    // Food::displayFood();
     return 0;
 }

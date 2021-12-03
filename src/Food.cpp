@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <string>
 #include <fstream>
+#include <cmath>
 #include <conio.h>
 #include <windows.h>
 #include <vector>
@@ -52,7 +53,7 @@ void Food::setFoodType()
     {
         if(ch == 72)
         {
-            if(foodType == "Drink"){
+            if(foodType == "drink"){
                 cout << "\b\b\b\b\b";
                 foodType = "food";
                 cout << " food";
@@ -61,7 +62,7 @@ void Food::setFoodType()
         }
         else if(ch == 80)
         {
-            if(foodType == "Food"){
+            if(foodType == "food"){
                 cout << "\b\b\b\b\b";
                 foodType = "drink";
                 cout << "drink";
@@ -108,17 +109,25 @@ void Food::displayFood()
     Food::getFoodDataTable(foodList, i);
 
     while((opt = getch())!= RETURN){
-
         opt = getch();
 
         if(opt == 77) // move right
         {
-            Food::getFoodDataTable(foodList, ++i);
+            ++i;
+            if(i * 10 > ceil(foodList.size()) + 10){
+                i--;
+            }
+
+            Food::getFoodDataTable(foodList, i);
             continue;
         }
         else if(opt == 75) // move left
         {
-            Food::getFoodDataTable(foodList, --i);
+            --i;
+            if(i <= 0)
+                i = 1;
+
+            Food::getFoodDataTable(foodList, i);
             continue;
         }
         else if(opt == 72) // move up
@@ -136,6 +145,8 @@ void Food::displayFood()
                 cout << ++current;
             }
         }
+
+        fflush(stdin);
     }
 
     if(current == 1){
@@ -203,7 +214,6 @@ void Food::getFoodDataTable(vector <Food> foodList, int counter)
     cout << setfill(' ') << setw(15) << "Food Type" << " |";
     cout << setfill(' ') << setw(15) << "Price" << " |";
     cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
-
 
     for(int i = iValue; dataTableSize; i++)
     {
