@@ -129,7 +129,8 @@ void Food::displayFood()
             Food::getFoodDataTable(foodList, i);
             continue;
         }
-        else if(opt == 72) // move up
+
+        if(opt == 72) // move down
         {
             if(current > 1){
                 cout << "\b \b";
@@ -149,7 +150,7 @@ void Food::displayFood()
     }
 
     if(current == 1){
-
+        Food::displaySort(foodList, 1, true);
     }
     else if(current == 2)
     {
@@ -226,5 +227,162 @@ void Food::getFoodDataTable(vector <Food> foodList, int counter)
 
     cout << endl << setfill(' ') << setw(60) << "> 1";
 }
+
+void Food::sortFoodDataTable(vector <Food> foodList, int counter, int current)
+{
+    system("cls");
+    cout << "\n\n\t\t1. Sort By Name\t\t2. Search By Type\t3. Search By Price\t    4. Back" << endl;
+    cout << fixed;
+    // table header
+    cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+    cout << "\t\t|" << setfill(' ') << setw(5) << "Bil" << " |";
+    cout << setfill(' ') << setw(13) << "Food Code" << " |";
+    cout << setfill(' ') << setw(25) << "Food Name" << " |";
+    cout << setfill(' ') << setw(15) << "Food Type" << " |";
+    cout << setfill(' ') << setw(15) << "Price" << " |";
+    cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+
+    for(int i = iValue; dataTableSize; i++)
+    {
+        cout << "\t\t|" << setfill(' ') << setw(5) << i + 1 << " |";
+        cout << setfill(' ') << setw(13) << foodList[i].foodCode << " |";
+        cout << setfill(' ') << setw(25) << foodList[i].foodName << " |";
+        cout << setfill(' ') << setw(15) << foodList[i].foodType << " |";
+        cout << setfill(' ') << setw(15) << setprecision(2) << foodList[i].foodPrice << " |";
+        cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
+    }
+
+    cout << endl << setfill(' ') << setw(60) << "> " << current;
+}
+
+void swapValue(vector <Food> & foodList, int i, int j, int x = 0)
+{
+    if (foodList[i].getFoodName()[x] > foodList[j].getFoodName()[x])
+    {
+        Food temp(foodList[i].getFoodCode(), foodList[i].getFoodName(), foodList[i].getFoodType(), foodList[i].getFoodPrice());
+        foodList[i] = foodList[j];
+        foodList[j] = temp;
+    }
+    else if(foodList[i].getFoodName()[x] == foodList[j].getFoodName()[x])
+    {
+        swapValue(foodList, i, j, x + 1);
+    }
+}
+
+void Food::sortByName(vector <Food> & foodList)
+{
+    for (int i = 0; i < foodList.size(); i++)
+    {
+        for(int j = i + 1; j < foodList.size(); j++)
+        {
+            swapValue(foodList, i, j);
+        }
+    }
+}
+
+void Food::sortByType(vector <Food> & foodList)
+{
+    for (int i = 0; i < foodList.size(); i++)
+    {
+        for(int j = i + 1; j < foodList.size(); j++)
+        {
+            if (foodList[i].getFoodType() > foodList[j].getFoodType())
+            {
+                Food temp(foodList[i].getFoodCode(), foodList[i].getFoodName(), foodList[i].getFoodType(), foodList[i].getFoodPrice());
+                foodList[i] = foodList[j];
+                foodList[j] = temp;
+            }
+        }
+    }
+}
+
+void Food::sortByPrice(vector <Food> & foodList)
+{
+    for (int i = 0; i < foodList.size(); i++)
+    {
+        for(int j = i + 1; j < foodList.size(); j++)
+        {
+            if (foodList[i].getFoodPrice() > foodList[j].getFoodPrice())
+            {
+                Food temp(foodList[i].getFoodCode(), foodList[i].getFoodName(), foodList[i].getFoodType(), foodList[i].getFoodPrice());
+                foodList[i] = foodList[j];
+                foodList[j] = temp;
+            }
+        }
+    }
+}
+
+void Food::displaySort(vector <Food> foodList, int current = 1, bool isTrue = true)
+{
+    unsigned char opt = 0; int i = 1;
+    vector <Food> temp = foodList;
+
+    if(isTrue == true)
+    {
+        Food::sortFoodDataTable(temp, i, current);
+    }
+
+    while((opt = getch())!= RETURN){
+
+        if(opt == 77) // move right
+        {
+            ++i;
+            if(i * 10 > ceil(temp.size()) + 10){
+                i--;
+            }
+
+            Food::sortFoodDataTable(temp, i, current);
+            continue;
+        }
+        else if(opt == 75) // move left
+        {
+            --i;
+            if(i <= 0)
+                i = 1;
+
+            Food::sortFoodDataTable(temp, i, current);
+            continue;
+        }
+        else if(opt == 72) // move up
+        {
+            if(current > 1){
+                cout << "\b \b";
+                cout << --current;
+            }
+        }
+        else if(opt == 80) // move up
+        {
+            if(current < 4){
+                cout << "\b \b";
+                cout << ++current;
+            }
+        }
+
+        fflush(stdin);
+    }
+
+    if(current == 1)
+    {
+        sortByName(temp);
+        Food::sortFoodDataTable(temp, i, current);
+        Food::displaySort(temp, current, false);
+    }
+    else if(current == 2)
+    {
+        sortByType(temp);
+        Food::sortFoodDataTable(temp, i, current);
+        Food::displaySort(temp, current, false);
+    }
+    else if(current == 3)
+    {
+        sortByPrice(temp);
+        Food::sortFoodDataTable(temp, i, current);
+        Food::displaySort(temp, current, false);
+    }
+    else if(current == 4){
+        Food::displayFood();
+    }
+}
+
 
 
