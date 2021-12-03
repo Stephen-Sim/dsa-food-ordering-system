@@ -1,6 +1,7 @@
 #include "Customer.h"
 #include "Menu.h"
 #include "Food.h"
+#include "Order.h"
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
@@ -80,24 +81,16 @@ void Customer::cusMenu(){
 
 void Customer::cusAction(int opt){
 
-    switch(opt){
-
-    case 1:
-        // add item
-        break;
-
-    case 2:
-        // display item
+    if(opt == 1)
+    {
+        Order order;
+    }
+    else if(opt == 2)
+    {
         Food::displayFood('c');
-        break;
-
-    case 3:
-        // back to main menu
+    }
+    else if(opt == 3)
+    {
         Menu::userAction(Menu::selectUser());
-        break;
-
-    default:
-        // nothing
-        break;
     }
 }

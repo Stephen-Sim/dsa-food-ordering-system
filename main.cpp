@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sys/stat.h>
 #include "Menu.h"
-#include "Customer.h"
+#include "Order.h"
 #include "Seed.h"
 using namespace std;
 
@@ -18,9 +18,7 @@ int main()
         Seed seed;
     }
 
-    // Menu menu;
-    // Admin::addFood();
-    // Food::displayFood();
-    Customer cus;
+    Menu menu;
+    // Order order;
     return 0;
 }

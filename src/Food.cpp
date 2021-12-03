@@ -151,7 +151,7 @@ void Food::displayFood(char currentUser)
     }
 
     if(current == 1){
-        Food::displaySort(foodList, 1, currentUser, true);
+        Food::displaySort(foodList, currentUser, 1, true);
     }
     else if(current == 2)
     {
@@ -264,7 +264,7 @@ void Food::sortFoodDataTable(vector <Food> foodList, int counter, int current)
     cout << endl << setfill(' ') << setw(60) << "> " << current;
 }
 
-void swapValue(vector <Food> & foodList, int i, int j, int x = 0)
+void Food::swapValue(vector <Food> & foodList, int i, int j, int x = 0)
 {
     if (foodList[i].getFoodName()[x] > foodList[j].getFoodName()[x])
     {
@@ -284,7 +284,7 @@ void Food::sortByName(vector <Food> & foodList)
     {
         for(int j = i + 1; j < foodList.size(); j++)
         {
-            swapValue(foodList, i, j);
+            this->swapValue(foodList, i, j);
         }
     }
 }
@@ -321,7 +321,7 @@ void Food::sortByPrice(vector <Food> & foodList)
     }
 }
 
-void Food::displaySort(vector <Food> foodList, char currentUser, int current = 1, bool isTrue = true)
+void Food::displaySort(vector <Food> foodList, char currentUser, int current, bool isTrue)
 {
     unsigned char opt = 0; int i = 1;
     vector <Food> temp = foodList;
@@ -435,8 +435,9 @@ void Food::searchMenu(vector <Food> foodList)
 
 Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isTrue)
 {
-    int low = 0, high = foodList.size();
+    sortByName(foodList);
 
+    int low = 0, high = foodList.size();
     while(low <= high)
     {
         int mid = low + (high - low) / 2;
