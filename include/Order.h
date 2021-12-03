@@ -11,17 +11,23 @@ class Order
 {
     public:
         Order();
+        Order(Food, int, double);
         virtual ~Order();
 
         void orderScreen(vector<Order>&);
         void addOrder(vector<Order>&);
         vector <Food> getFoodByType(vector<Food>, string);
         Food selectOrderFood(vector<Food>);
+        int getOrderQuantity();
+        int getQuantity();
+        double getTotalAmount();
+        void confirmOrder(vector<Order> &);
+
+        Food food;
 
     protected:
 
     private:
-        vector <Food> food;
         int quantity;
         double totalAmount;
 };
