@@ -1,15 +1,11 @@
-FO101,Sarawak Laksa,food,5.5
-FO102,Mee Goreng Mamak,food,5
 FO103,Nasi Kerabu,food,7.5
-FO104,Nasi Kandar,food,7
-FO105,Nasi Lemak,food,4
+FO101,Sarawak Laksa,food,5.5
+DR102,Kopi,drink,2
+FO102,Mee Goreng Mamak,food,5.5
 FO106,Roti John,food,5
-DR101,Teh O Ais,drink,1.2
-DR102,Kopi,drink,1.5
+FO105,Nasi Lemak,food,4
+FO104,Nasi Kandar,food,7
 DR103,Cendol,drink,3
+DR101,Teh O Ais,drink,1.2
 DR104,Milo,drink,2
-FA106,Nasi Ayam,food,5
-admin,adminabc,food,2
-abc,abcCendol,drink,4
-step,sdf,drink,3
-asdf,asdf,drink,4
+FO106,Nasi Ayam,food,5
