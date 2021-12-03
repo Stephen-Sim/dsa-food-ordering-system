@@ -109,7 +109,6 @@ void Food::displayFood()
     Food::getFoodDataTable(foodList, i);
 
     while((opt = getch())!= RETURN){
-        opt = getch();
 
         if(opt == 77) // move right
         {

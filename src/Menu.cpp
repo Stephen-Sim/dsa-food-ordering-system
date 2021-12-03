@@ -71,7 +71,6 @@ int Menu::selectUser()
     cout << endl << setw(60) << "> 1";
 
     while((opt = getch())!= RETURN){
-        opt = getch();
 
         if(opt == 72) // move up
         {

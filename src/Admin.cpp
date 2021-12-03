@@ -87,7 +87,6 @@ void Admin::adminMenu(){
 
 
     while((opt = getch())!= RETURN){
-        opt = getch();
 
         if(opt == 72) // move up
         {
