@@ -211,6 +211,9 @@ void Admin::addFood(){
     cin >> foodPrice;
     food.setFoodPrice(foodPrice);
 
+    cin.clear();
+    cin.ignore(1000, '\n');
+
     ofstream file("food.csv", ofstream::out | ofstream::app);
     file << food.getFoodCode() << ',' << food.getFoodName() << ','  << food.getFoodType() << ','  << food.getFoodPrice() << endl;
     file.close();

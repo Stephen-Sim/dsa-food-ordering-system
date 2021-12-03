@@ -30,9 +30,7 @@ class Food
         static void sortByName(vector<Food>&);
         static void sortByType(vector<Food>&);
         static void sortByPrice(vector<Food>&);
-
-        void swapValue(vector <Food>&, int, int, int);
-
+        static void swapValue(vector <Food>&, int, int, int);
         static void searchMenu(vector <Food>);
         static Food binarySearch(vector <Food>, string, bool&);
 

@@ -18,7 +18,7 @@ int main()
         Seed seed;
     }
 
-    Menu menu;
-    // Order order;
+    // Menu menu;
+    Order order;
     return 0;
 }

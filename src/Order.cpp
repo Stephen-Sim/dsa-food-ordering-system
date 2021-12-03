@@ -40,7 +40,7 @@ void Order::orderScreen(vector <Order> & order)
         cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
         cout << "\t\t|" << setfill(' ') << setw(5) << "Bil" << " |";
         cout << setfill(' ') << setw(18) << "Food Name" << " |";
-        cout << setfill(' ') << setw(10) << "Quantiy" << " |";
+        cout << setfill(' ') << setw(10) << "Quantity" << " |";
         cout << setfill(' ') << setw(14) << "Food Type" << " |";
         cout << setfill(' ') << setw(11) << "Price" << " |";
         cout << setfill(' ') << setw(13) << "Total Price" << " |";
@@ -88,7 +88,7 @@ void Order::orderScreen(vector <Order> & order)
     }
 }
 
-string getFoodType()
+string getFoodTypeFromUser()
 {
     unsigned char ch = 0;
 
@@ -115,6 +115,7 @@ string getFoodType()
                 cout << "drink";
             }
         }
+        fflush(stdin);
     }
 
     return foodType;
@@ -132,28 +133,76 @@ void Order::addOrder(vector <Order> & order)
     cout << "\n\n\n\n\n" << endl;
 
     cout << "\n" << setw(69) << "Choose the Food Type  : ";
-    foodType = getFoodType();
+    foodType = getFoodTypeFromUser();
 
 
     cout << "\n\n" << setw(69) << "Choose the Food       : ";
 
     vector <Food> foods = Food::getFoodFromFile();
 
-    if(foodType == "drink")
-    {
+    vector <Food> temps = this->getFoodByType(foods, foodType);
 
-    }
-    else if(foodType == "food")
-    {
-
-    }
+    Food selectedFood = this->selectOrderFood(temps);
 
     cout << "\n\n\n" << setw(75) << "Order Successfully Added !!!" << endl;
     cout << "\n\n\t\t\t\t\t     ";
     system("pause");
 }
 
-void displayFoodByType(vector<Food>, string foodType)
+vector <Food> Order::getFoodByType(vector<Food> foodList, string foodType)
 {
+    vector <Food> foods;
 
+    for(int i = 0; i < foodList.size(); i++)
+    {
+        if(foodList[i].getFoodType() == foodType)
+        {
+            foods.push_back(foodList[i]);
+        }
+    }
+
+    return foods;
+}
+
+
+Food Order::selectOrderFood(vector<Food> foodList)
+{
+    unsigned char ch = 0;
+    int i = 0;
+    cout << foodList[i].getFoodName();
+
+    while((ch = getch())!= RETURN)
+    {
+        if(ch == 80) // move down
+        {
+            if(i < foodList.size() - 1)
+            {
+                for(int j = 0; j < foodList[i].getFoodName().size(); j++)
+                {
+                    cout << "\b \b";
+                }
+
+                i++;
+
+                cout << foodList[i].getFoodName();
+            }
+        }
+        else if(ch == 72) // move up
+        {
+            if(i > 0)
+            {
+                for(int j = 0; j < foodList[i].getFoodName().size(); j++)
+                {
+                    cout << "\b \b";
+                }
+
+                i--;
+
+                cout << foodList[i].getFoodName();
+            }
+        }
+        fflush(stdin);
+    }
+
+    return foodList[i];
 }

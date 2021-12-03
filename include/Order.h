@@ -15,7 +15,8 @@ class Order
 
         void orderScreen(vector<Order>&);
         void addOrder(vector<Order>&);
-        void displayFoodByType(vector<Food>, string);
+        vector <Food> getFoodByType(vector<Food>, string);
+        Food selectOrderFood(vector<Food>);
 
     protected:
 

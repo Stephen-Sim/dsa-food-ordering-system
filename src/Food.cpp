@@ -284,7 +284,7 @@ void Food::sortByName(vector <Food> & foodList)
     {
         for(int j = i + 1; j < foodList.size(); j++)
         {
-            this->swapValue(foodList, i, j);
+            swapValue(foodList, i, j);
         }
     }
 }
