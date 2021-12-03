@@ -2,13 +2,16 @@
 #define FOOD_H
 
 #include <string>
+#include <vector>
 using std::string;
+using std::vector;
 
 class Food
 {
     public:
         Food();
         virtual ~Food();
+        Food(string, string, string, double);
         void setFoodCode(string);
         void setFoodName(string);
         void setFoodType();
@@ -19,13 +22,17 @@ class Food
         string getFoodType();
         double getFoodPrice();
 
+        static void displayFood();
+        static vector <Food> getFoodFromFile();
+        static void getFoodDataTable(vector<Food>);
+
     protected:
 
     private:
         string foodCode;
         string foodName;
-        double foodPrice;
         string foodType;
+        double foodPrice;
 
 };
 

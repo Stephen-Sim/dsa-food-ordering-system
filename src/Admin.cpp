@@ -108,7 +108,6 @@ void Admin::adminAction(int opt){
 
     case 2:
         // display item
-
         break;
 
     case 3:
@@ -210,4 +209,5 @@ void Admin::addFood(){
     cout << "\n\n\t\t\t\t\t     ";
     system("pause");
 }
+
 

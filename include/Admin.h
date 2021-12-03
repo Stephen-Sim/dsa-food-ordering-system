@@ -12,7 +12,7 @@ class Admin
         virtual ~Admin();
         string getpass(bool);
         void adminAction(int);
-        int adminMenu();
+        static int adminMenu();
         void adminLogin();
         void addFood();
 
