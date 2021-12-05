@@ -111,27 +111,18 @@ void Admin::adminMenu(){
 
 void Admin::adminAction(int opt){
 
-    switch(opt){
-
-    case 1:
-        // add item
+    if(opt == 1)
+    {
         addFood();
         adminMenu();
-        break;
-
-    case 2:
-        // display item
-        Food::displayFood('a');
-        break;
-
-    case 3:
-        // back to main menu
+    }
+    else if(opt == 2)
+    {
+        Food::displayFood('a', Food::foodList);
+    }
+    else if(opt == 3)
+    {
         Menu::userAction(Menu::selectUser());
-        break;
-
-    default:
-        // nothing
-        break;
     }
 }
 

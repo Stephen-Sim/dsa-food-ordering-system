@@ -87,7 +87,7 @@ void Customer::cusAction(int opt){
     }
     else if(opt == 2)
     {
-        Food::displayFood('c');
+        Food::displayFood('c', Food::foodList);
     }
     else if(opt == 3)
     {

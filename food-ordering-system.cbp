@@ -35,13 +35,17 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Admin.h" />
+		<Unit filename="include/Customer.h" />
 		<Unit filename="include/Food.h" />
 		<Unit filename="include/Menu.h" />
+		<Unit filename="include/Order.h" />
 		<Unit filename="include/Seed.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Admin.cpp" />
+		<Unit filename="src/Customer.cpp" />
 		<Unit filename="src/Food.cpp" />
 		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/Order.cpp" />
 		<Unit filename="src/Seed.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

@@ -23,6 +23,8 @@ Food::~Food()
     //dtor
 }
 
+vector <Food> Food::foodList = Food::getFoodFromFile();
+
 Food::Food(string foodCode, string foodName, string foodType, double foodPrice)
 {
     this->foodCode  = foodCode;
@@ -99,14 +101,15 @@ double Food::getFoodPrice()
     return this->foodPrice;
 }
 
-void Food::displayFood(char currentUser)
+
+
+void Food::displayFood(char currentUser, vector <Food> & foodList)
 {
     system("cls");
     unsigned char opt = 0;
     int current = 1;
     int i = 1;
 
-    vector <Food> foodList = Food::getFoodFromFile();
     Food::getFoodDataTable(foodList, i);
 
     while((opt = getch())!= RETURN){
@@ -156,7 +159,7 @@ void Food::displayFood(char currentUser)
     else if(current == 2)
     {
         Food::searchMenu(foodList);
-        Food::displayFood(currentUser);
+        Food::displayFood(currentUser, foodList);
     }
     else if(current == 3){
         if(currentUser == 'a')
@@ -321,14 +324,13 @@ void Food::sortByPrice(vector <Food> & foodList)
     }
 }
 
-void Food::displaySort(vector <Food> foodList, char currentUser, int current, bool isTrue)
+void Food::displaySort(vector <Food> & foodList, char currentUser, int current, bool isTrue)
 {
     unsigned char opt = 0; int i = 1;
-    vector <Food> temp = foodList;
 
     if(isTrue == true)
     {
-        Food::sortFoodDataTable(temp, i, current);
+        Food::sortFoodDataTable(foodList, i, current);
     }
 
     while((opt = getch())!= RETURN){
@@ -336,11 +338,11 @@ void Food::displaySort(vector <Food> foodList, char currentUser, int current, bo
         if(opt == 77) // move right
         {
             ++i;
-            if(i * 10 > ceil(temp.size()) + 10){
+            if(i * 10 > ceil(foodList.size()) + 10){
                 i--;
             }
 
-            Food::sortFoodDataTable(temp, i, current);
+            Food::sortFoodDataTable(foodList, i, current);
             continue;
         }
         else if(opt == 75) // move left
@@ -349,7 +351,7 @@ void Food::displaySort(vector <Food> foodList, char currentUser, int current, bo
             if(i <= 0)
                 i = 1;
 
-            Food::sortFoodDataTable(temp, i, current);
+            Food::sortFoodDataTable(foodList, i, current);
             continue;
         }
         else if(opt == 72) // move up
@@ -372,24 +374,24 @@ void Food::displaySort(vector <Food> foodList, char currentUser, int current, bo
 
     if(current == 1)
     {
-        sortByName(temp);
-        Food::sortFoodDataTable(temp, i, current);
-        Food::displaySort(temp, currentUser, current, false);
+        sortByName(foodList);
+        Food::sortFoodDataTable(foodList, i, current);
+        Food::displaySort(foodList, currentUser, current, false);
     }
     else if(current == 2)
     {
-        sortByType(temp);
-        Food::sortFoodDataTable(temp, i, current);
-        Food::displaySort(temp, currentUser, current, false);
+        sortByType(foodList);
+        Food::sortFoodDataTable(foodList, i, current);
+        Food::displaySort(foodList, currentUser, current, false);
     }
     else if(current == 3)
     {
-        sortByPrice(temp);
-        Food::sortFoodDataTable(temp, i, current);
-        Food::displaySort(temp, currentUser, current, false);
+        sortByPrice(foodList);
+        Food::sortFoodDataTable(foodList, i, current);
+        Food::displaySort(foodList, currentUser, current, false);
     }
     else if(current == 4){
-        Food::displayFood(currentUser);
+        Food::displayFood(currentUser, foodList);
     }
 }
 
