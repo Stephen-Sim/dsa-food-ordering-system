@@ -110,7 +110,7 @@ void Order::orderScreen(vector <Order> & order)
     }
 }
 
-string getFoodTypeFromUser()
+string Order::getFoodTypeFromUser()
 {
     unsigned char ch = 0;
 

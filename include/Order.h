@@ -20,6 +20,7 @@ class Order
         Food selectOrderFood(vector<Food>);
         int getOrderQuantity();
         int getQuantity();
+        string getFoodTypeFromUser();
         double getTotalAmount();
         void confirmOrder(vector<Order> &);
 
