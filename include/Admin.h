@@ -2,6 +2,7 @@
 #define ADMIN_H
 
 #include <string>
+#include "Food.h"
 
 using std::string;
 
@@ -14,7 +15,7 @@ class Admin
         static void adminAction(int);
         static void adminMenu();
         void adminLogin();
-        static void addFood();
+        static void addFood(vector<Food>&);
 
     protected:
 

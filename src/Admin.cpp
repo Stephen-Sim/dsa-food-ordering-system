@@ -113,7 +113,7 @@ void Admin::adminAction(int opt){
 
     if(opt == 1)
     {
-        addFood();
+        addFood(Food::foodList);
         adminMenu();
     }
     else if(opt == 2)
@@ -178,7 +178,7 @@ void Admin::adminLogin(){
     }
 }
 
-void Admin::addFood(){
+void Admin::addFood(vector<Food> &foodList){
     system("cls");
 
     cout << "Move Arrow Key Up to select Food, Down to Select Drink";
@@ -208,6 +208,8 @@ void Admin::addFood(){
     ofstream file("food.csv", ofstream::out | ofstream::app);
     file << food.getFoodCode() << ',' << food.getFoodName() << ','  << food.getFoodType() << ','  << food.getFoodPrice() << endl;
     file.close();
+
+    foodList = Food::getFoodFromFile();
 
     cout << "\n\n\n" << setw(75) << "Food Successfully Added !!!" << endl;
     cout << "\n\n\t\t\t\t\t     ";

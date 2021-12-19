@@ -23,7 +23,7 @@ Food::~Food()
     //dtor
 }
 
-vector <Food> Food::foodList = Food::getFoodFromFile();
+vector <Food> Food::foodList = Food::sortFood(Food::getFoodFromFile());
 
 Food::Food(string foodCode, string foodName, string foodType, double foodPrice)
 {
@@ -281,6 +281,19 @@ void Food::swapValue(vector <Food> & foodList, int i, int j, int x = 0)
     }
 }
 
+vector <Food> Food::sortFood(vector <Food> foodList)
+{
+    for (int i = 0; i < foodList.size(); i++)
+    {
+        for(int j = i + 1; j < foodList.size(); j++)
+        {
+            swapValue(foodList, i, j);
+        }
+    }
+
+    return foodList;
+}
+
 void Food::sortByName(vector <Food> & foodList)
 {
     for (int i = 0; i < foodList.size(); i++)
@@ -435,25 +448,38 @@ void Food::searchMenu(vector <Food> foodList)
     system("pause");
 }
 
-Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isTrue)
+Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isFound)
 {
     sortByName(foodList);
 
-    int low = 0, high = foodList.size();
+    int low = 0, high = foodList.size() - 1;
     while(low <= high)
     {
         int mid = low + (high - low) / 2;
 
         if (foodList[mid].getFoodName() == foodName)
         {
-            isTrue = true;
+            isFound = true;
             return foodList[mid];
         }
 
-        if (foodList[mid].getFoodName()[0] < foodName[0])
-            low = mid + 1;
-        else
-            high = mid - 1;
+        int i = 0;
+        while(i + 1)
+        {
+            if(foodList[mid].getFoodName()[i] == foodName[i])
+            {
+                i++;
+                continue;
+            }
+
+            if (foodList[mid].getFoodName()[i] < foodName[i])
+                low = mid + 1;
+            else
+                high = mid - 1;
+
+            break;
+        }
+
     }
 
     Food food(" ", " ", " ", 0.0);
