@@ -448,7 +448,7 @@ void Food::searchMenu(vector <Food> foodList)
     system("pause");
 }
 
-Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isFound)
+Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isTrue)
 {
     sortByName(foodList);
 
@@ -459,13 +459,18 @@ Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isFound)
 
         if (foodList[mid].getFoodName() == foodName)
         {
-            isFound = true;
+            isTrue = true;
             return foodList[mid];
         }
 
         int i = 0;
         while(i + 1)
         {
+            if(i > foodList[mid].getFoodName().length() || i > foodList[mid].getFoodName().length())
+            {
+                break;
+            }
+
             if(foodList[mid].getFoodName()[i] == foodName[i])
             {
                 i++;
@@ -479,7 +484,6 @@ Food Food::binarySearch(vector <Food> foodList, string foodName, bool &isFound)
 
             break;
         }
-
     }
 
     Food food(" ", " ", " ", 0.0);
