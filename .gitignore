@@ -1,5 +1,5 @@
-./*.save
-./food-ordering-system.depend
-./food-ordering-system.layout
-./include/*.save
-./src/*.save
+/*.save
+/food-ordering-system.depend
+/food-ordering-system.layout
+/include/*.save
+/src/*.save
