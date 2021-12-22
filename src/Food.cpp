@@ -243,7 +243,7 @@ void Food::getFoodDataTable(vector <Food> foodList, int counter)
 void Food::sortFoodDataTable(vector <Food> foodList, int counter, int current)
 {
     system("cls");
-    cout << "\n\n\t\t1. Sort By Name\t\t2. Search By Type\t3. Search By Price\t    4. Back" << endl;
+    cout << "\n\n\t\t1. Sort By Name\t\t2. Sort By Type\t\t3. Sort By Price\t    4. Back" << endl;
     cout << fixed;
     // table header
     cout << "\n\t\t" << setfill('-') << setw(85) << "\n";
